@@ -19,19 +19,7 @@ export default function PostsPage() {
     <div className="container">
       <h1>Lista dei post</h1>
 
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Titolo</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <PostsList posts={posts}></PostsList>
-        </tbody>
-      </table>
+      <PostsList posts={posts}></PostsList>
     </div>
   );
 }
