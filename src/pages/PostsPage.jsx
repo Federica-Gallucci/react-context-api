@@ -1,15 +1,19 @@
+import { usePosts } from "../contexts/PostsContext";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import PostsList from "../components/PostsList";
 
 export default function PostsPage() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    axios.get("http://localhost:3000/posts").then((res) => {
-      console.log(res.data.data);
-      setPosts(res.data.data);
-    });
-  }, []);
+  const { posts } = usePosts();
+
+  // const [posts, setPosts] = useState([]);
+  // useEffect(() => {
+  //   axios.get("http://localhost:3000/posts").then((res) => {
+  //     console.log(res.data.data);
+  //     setPosts(res.data.data);
+  //   });
+  // }, []);
 
   return (
     <div className="container">
@@ -25,17 +29,7 @@ export default function PostsPage() {
         </thead>
 
         <tbody>
-          {posts.map((post) => {
-            return (
-              <tr key={post.id}>
-                <td>{post.id}</td>
-                <td>{post.title}</td>
-                <td>
-                  <Link to={`/posts/${post.id}`}>Open</Link>
-                </td>
-              </tr>
-            );
-          })}
+          <PostsList posts={posts}></PostsList>
         </tbody>
       </table>
     </div>

@@ -20,8 +20,12 @@ export default function PostDetailPage() {
   return (
     <>
       <div className="container">
-        <h1>{post.title}</h1>
-        <img src={`http://localhost:3000${post.image}`} alt={post.title} />
+        <h1 className="my-2">{post.title}</h1>
+        <img
+          src={`http://localhost:3000${post.image}`}
+          className="img-thumbnail rounded mx-auto d-block my-3"
+          alt={post.title}
+        />
         <p>{post.content}</p>
         <ul>
           {post.tags.map((tag, i) => (
